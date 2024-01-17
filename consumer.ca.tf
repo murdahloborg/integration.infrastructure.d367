@@ -30,7 +30,7 @@ resource "azapi_resource" "containerapp_consumer" {
       configuration = {
         ingress = {
           external : true,
-          targetPort : 80
+          targetPort : 8080
 
           customDomains = [
             {
