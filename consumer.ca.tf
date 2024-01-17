@@ -40,13 +40,20 @@ resource "azapi_resource" "containerapp_consumer" {
             }
           ]
         },
- 
+        "registries": [
+            {
+                "server": azurerm_container_registry.acr_int.login_server,
+                "username": azurerm_container_registry.acr_int.admin_username,
+                "passwordSecretRef": azurerm_container_registry.acr_int.admin_password,
+                "identity": ""
+            }
+        ]
       }
       template = {
         containers = [
           {
             image = "${var.consumer_image}"
-            name  = "consumer"
+            name  = "ca-consumer-${var.az_env_name}-${var.az_subscription_name}-${var.az_env_sufix}"
             resources = {
               cpu    = 0.25
               memory = "0.5Gi"
