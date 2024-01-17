@@ -8,6 +8,7 @@ jobs:
   update-ca-image:
     runs-on: [ ubuntu-latest ]
     permissions:
+      actions: write
       contents: write
 
     steps:
