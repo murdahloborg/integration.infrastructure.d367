@@ -61,6 +61,12 @@ resource "azapi_resource" "containerapp_consumer" {
           {
             image = "${var.consumer_image}"
             name  = "ca-consumer-${var.az_env_name}-${var.az_subscription_name}-${var.az_env_sufix}"
+            env : [
+              {
+                name  = "ASPNETCORE_ENVIRONMENT"
+                value = "Dev"
+              }
+            ]
             resources = {
               cpu    = 0.25
               memory = "0.5Gi"
