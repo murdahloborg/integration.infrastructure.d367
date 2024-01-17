@@ -30,3 +30,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Updated ${{ github.event.client_payload.ca_name }} ca image
+
+      - name: Trigger update infrastructure action
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: update_env_infrastructure
