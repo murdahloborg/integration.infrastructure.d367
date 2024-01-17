@@ -42,9 +42,9 @@ resource "azapi_resource" "containerapp_consumer" {
         },
         "registries": [
             {
-                "server": azurerm_container_registry.acr_int.login_server,
-                "username": azurerm_container_registry.acr_int.admin_username,
-                "passwordSecretRef": azurerm_container_registry.acr_int.admin_password,
+                "server": data.azurerm_container_registry.acr_int.login_server,
+                "username": data.azurerm_container_registry.acr_int.admin_username,
+                "passwordSecretRef": data.azurerm_container_registry.acr_int.admin_password,
                 "identity": ""
             }
         ]
