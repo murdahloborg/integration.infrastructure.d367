@@ -44,9 +44,16 @@ resource "azapi_resource" "containerapp_consumer" {
             {
                 "server": data.azurerm_container_registry.acr_int.login_server,
                 "username": data.azurerm_container_registry.acr_int.admin_username,
-                "passwordSecretRef": data.azurerm_container_registry.acr_int.admin_password,
+                "passwordSecretRef": "acr-pwd-ref-ca-consumer-${var.az_env_name}-${var.az_subscription_name}-${var.az_env_sufix}",
                 "identity": ""
             }
+        ],
+        secrets : [
+          {
+            name = "acr-pwd-ref-ca-consumer-${var.az_env_name}-${var.az_subscription_name}-${var.az_env_sufix}"
+            # Todo: Use Managed Identity connection to ACR
+            value = data.azurerm_container_registry.acr_int.admin_password
+          }
         ]
       }
       template = {
