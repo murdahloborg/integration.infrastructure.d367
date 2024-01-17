@@ -45,6 +45,6 @@ data "azurerm_network_security_group" "nsg_int" {
 }
 
 data "azurerm_container_registry" "acr_int" {
-  name                = "caimagesintegrationstatic${var.az_subscription_name}.azurecr.io"
+  name                = "caimagesintegrationstatic${var.az_subscription_name}"
   resource_group_name = data.azurerm_resource_group.rg_int.name
 }
